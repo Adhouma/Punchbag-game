@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Punchbag Game</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Bag image -->
+        <div v-bind:class="{swing, blood}" v-on:click="swing = !swing; showBlood();" id="punch_bag"></div>
+        <!-- Motivation :) -->
+        <span v-if="health == 90" class="firstSpan fadeInDown">Hit Harder</span>
+        <span v-if="health == 70" class="secondSpan fadeInDown">Harder</span>
+        <span v-if="health == 50" class="thirdSpan fadeInDown">Again</span>
+        <span v-if="health == 30" class="fourthSpan fadeInDown">You can do it</span>
+        <span v-if="health == 10" class="fifthSpan fadeInDown">Almost there</span>
+        <span v-if="health <= 0" class="sixthSpan fadeInDown">You did it champ</span>
+        <!-- Bag health bar -->
+        <div id="healthBar">
+            <div id="myBar" v-bind:style="{width: health + '%'}"></div>
+        </div>
+        <!-- Game control buttons -->
+        <button v-if="health <= 0" v-on:click="reset()">Play Again</button>
+    </div>
+</body>
+</html>
